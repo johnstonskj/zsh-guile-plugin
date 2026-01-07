@@ -116,7 +116,9 @@ guile_plugin_unload() {
     # Remove the global data variable.
     unset GUILE
 
-    # Remove/reset any exported environment variables here if necessary.
+    unset GUILE_LOAD_PATH
+    unset GUILE_LOAD_COMPILED_PATH
+    unset GUILE_SYSTEM_EXTENSIONS_PATH
 
     # Remove this function.
     unfunction guile_plugin_unload
