@@ -1,11 +1,8 @@
 # -*- mode: sh; eval: (sh-set-shell "zsh") -*-
 #
 # Plugin Name: guile
+# Description: Configures environment variables for Guile Scheme programming language.
 # Repository: https://github.com/johnstonskj/zsh-guile-plugin
-#
-# Description:
-#
-#   Configures environment variables for Guile Scheme programming language.
 #
 # Public variables:
 #
