@@ -112,13 +112,14 @@ guile_plugin_unload() {
     for alias in ${aliases[@]}; do
         unalias "${alias}"
     done
-    
-    # Remove the global data variable.
-    unset GUILE
 
+    # Reset global environment variables .
     unset GUILE_LOAD_PATH
     unset GUILE_LOAD_COMPILED_PATH
     unset GUILE_SYSTEM_EXTENSIONS_PATH
+    
+    # Remove the global data variable.
+    unset GUILE
 
     # Remove this function.
     unfunction guile_plugin_unload
