@@ -1,8 +1,18 @@
 # -*- mode: sh; eval: (sh-set-shell "zsh") -*-
 #
-# @name guile
-# @brief Configures environment variables for Guile Scheme programming language.
-# @repository https://github.com/johnstonskj/zsh-guile-plugin
+# @name: guile
+# @brief: Set environment variables for the GNU Guile Scheme programming language.
+# @repository: https://github.com/johnstonskj/zsh-guile-plugin
+# @version: 0.1.1
+# @license: MIT AND Apache-2.0
+#
+# Public variables:
+#
+# * `GUILE_LOAD_PATH`; the load path for guile.
+# * `GUILE_LOAD_COMPILED_PATH`; the compiled load path for guile.
+# * `GUILE_PREFIX`; the install directory for guile.
+# * `GUILE_SYSTEM_EXTENSIONS_PATH`; the system extensions path for guile.
+# * `GUILE_VERSION`; the version of the guile REPL.
 #
 
 ############################################################################
@@ -18,7 +28,7 @@ guile_plugin_init() {
 
     @zplugins_envvar_save guile GUILE_PREFIX
     local GUILE_PREFIX=$(dirname $(dirname $(readlink -f $(command -v guile))))
-    
+
     @zplugins_envvar_save guile GUILE_LOAD_PATH
     export GUILE_LOAD_PATH="${GUILE_PREFIX}/share/guile/site/${GUILE_VERSION}"
 
@@ -26,7 +36,7 @@ guile_plugin_init() {
     export GUILE_LOAD_COMPILED_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/site-ccache"
 
     @zplugins_envvar_save guile GUILE_SYSTEM_EXTENSIONS_PATH
-    export GUILE_SYSTEM_EXTENSIONS_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/extensions"    
+    export GUILE_SYSTEM_EXTENSIONS_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/extensions"
 }
 
 guile_plugin_unload() {
