@@ -24,19 +24,19 @@ guile_plugin_init() {
     builtin emulate -L zsh
 
     @zplugins_envvar_save guile GUILE_VERSION
-    local GUILE_VERSION=$(guile --version | head -n1 | cut -d " " -f 4 | cut -d "." -f 1-2)
+    typeset -g GUILE_VERSION=$(guile --version | head -n1 | cut -d " " -f 4 | cut -d "." -f 1-2)
 
     @zplugins_envvar_save guile GUILE_PREFIX
-    local GUILE_PREFIX=$(dirname $(dirname $(readlink -f $(command -v guile))))
+    typeset -g GUILE_PREFIX=$(dirname $(dirname $(readlink -f $(command -v guile))))
 
     @zplugins_envvar_save guile GUILE_LOAD_PATH
-    export GUILE_LOAD_PATH="${GUILE_PREFIX}/share/guile/site/${GUILE_VERSION}"
+    typeset -g GUILE_LOAD_PATH="${GUILE_PREFIX}/share/guile/site/${GUILE_VERSION}"
 
     @zplugins_envvar_save guile GUILE_LOAD_COMPILED_PATH
-    export GUILE_LOAD_COMPILED_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/site-ccache"
+    typeset -g GUILE_LOAD_COMPILED_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/site-ccache"
 
     @zplugins_envvar_save guile GUILE_SYSTEM_EXTENSIONS_PATH
-    export GUILE_SYSTEM_EXTENSIONS_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/extensions"
+    typeset -g GUILE_SYSTEM_EXTENSIONS_PATH="${GUILE_PREFIX}/lib/guile/${GUILE_VERSION}/extensions"
 }
 
 guile_plugin_unload() {
